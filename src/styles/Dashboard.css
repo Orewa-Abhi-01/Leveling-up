@@ -1,0 +1,23 @@
+.dashboard {
+  z-index: 99;
+  /* background-color: gradient(45deg, #b3310680, #393d81); */
+  color: white;
+  gap: 1rem;
+  padding: 0.7rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+
+.nav{
+  margin-top: 4rem;
+}

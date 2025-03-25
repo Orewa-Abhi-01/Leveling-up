@@ -1,0 +1,18 @@
+.dialog-box{
+    padding: 1rem;
+    
+  }
+
+  .stats{
+    margin-top: 15px;
+  }
+
+  .footer-dialog-box{
+    align-items: center;
+    margin-top: 15px;
+  }
+  .center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

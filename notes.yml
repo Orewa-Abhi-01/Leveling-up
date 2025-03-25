@@ -1,0 +1,277 @@
+  return (
+    <div
+      className=" container flex items-center justify-center h-screen bg-transparent absolute z-50 fade-in "
+    >
+      {!isAccepted ? (
+        <div className=" modall absolute  text-center text-cyan-400 border border-[#071B5B] rounded-lg shadow-lg bg-black/30">
+          <div className="absolute inset-0 border-2 border-cyan-400 rounded-lg animate-pulse -z-10" />
+          <h2 className=" title text-[2rem] font-bold border-b ">
+            NOTIFICATION
+          </h2>
+          <p className="message  text-2xl flex-wrap">
+            You have acquired the qualifications to be a{" "}
+            <span className=" highlight italic text-blue-300">Player</span>.
+            Will you accept?
+          </p>
+          <div className=" btn-container  flex justify-center gap-4">
+            <button
+              className=" accept cursor-pointer bg-cyan-400 text-black rounded-md transition hover:bg-blue-300"
+              onClick={handleAccept}
+            >
+              Accept
+            </button>
+            <button
+              className="delete text-cyan-400 border border-cyan-400 rounded-md transition hover:bg-cyan-400 hover:text-black"
+              onClick={() => setShowModal(false)}
+            >
+              Decline
+            </button>
+          </div>
+        </div>
+      ) : (
+        <>
+          {!isEntering ? (
+            <div
+              className={`modall  text-center border border-[#071B5B] rounded-xl shadow-lg bg-black/40 p-8 ${
+                isEntering ? "fade-out" : "fade-in"
+              } `}
+            >
+              {/* <div className="absolute inset-0 border-2 border-cyan-400 rounded-lg animate-pulse -z-10" /> */}
+              <div className="text-white text-2xl flex flex-col justify-evenly items-center">
+                <h2 className="title text-4xl">Welcome, Hunter!</h2>
+                <p className="mt-6 message">
+                  Join and level up yourself in this world of endless
+                  possibilities.
+                </p>
+                <button
+                  className="cursor-pointer bg-cyan-400 text-black  rounded-md transition hover:bg-blue-300 accept "
+                  onClick={handleEnter}
+                >
+                  Enter
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+            {showPortalVideo && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+                <PortalVideo onVideoEnd={handleVideoEnd} />
+              </div>
+            )}
+              {/* {!showAssessment ? (
+                <div className="flex flex-col items-center justify-center modall text-center border border-[#071B5B] rounded-xl shadow-lg bg-black/40 p-8">
+                  <h1 className="title text-3xl text-cyan-400 mb-6">
+                    Create Your Player Profile
+                  </h1>
+                  <div className="mb-6">
+                    <input
+                      type="text"
+                      value={playerName}
+                      onChange={(e) => setPlayerName(e.target.value)}
+                      placeholder="Enter your player name"
+                      className="px-4 py-2 rounded-md bg-black/60 text-cyan-400 border border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    />
+                  </div>
+                  <button
+                    onClick={handleNameSubmit}
+                    className="cursor-pointer bg-cyan-400 text-black px-6 py-2 rounded-md transition hover:bg-blue-300"
+                  >
+                    Continue to Assessment
+                  </button>
+                </div>
+              ) : (
+                <AssessmentForm onSubmit={handleAssessmentSubmit} />
+              )} */}
+            </>
+          )}
+        </>
+      )}
+
+      {!isSubmitted && isEntering && (
+        <div className="flex flex-col items-center justify-center  modall  text-center border border-[#071B5B] rounded-xl shadow-lg bg-black/40 p-8 ">
+          <h1 className=" text-4xl "> Enter your player name </h1>
+          <input
+            type="text"
+            value={playerName}
+            className="name  rounded-md bg-black/60 text-cyan-400 border border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            placeholder="your name"
+            onChange={(e) => setPlayerName(e.target.value)}
+          />
+
+          <div className=" flex flex-wrap gap-4">
+            <label htmlFor="rankRange" className="text-cyan-400">
+              Rank: <span className="font-bold">{rank}</span>
+            </label>
+            <input
+              type="range"
+              id="rankRange"
+              min={"E"}
+              max={"SS"}
+              value={
+                rank === "E"
+                  ? 0
+                  : rank === "D"
+                  ? 1
+                  : rank === "C"
+                  ? 2
+                  : rank === "B"
+                  ? 3
+                  : rank === "A"
+                  ? 4
+                  : 5
+              }
+              className="w-fit-content mt-2"
+            />
+
+            {/* <label htmlFor="xpRange" className="text-cyan-400">
+              XP: <span className="font-bold">{xp}</span> / 1000
+            </label>
+            <input
+              type="range"
+              id="xpRange"
+              min="0"
+              max="1000"
+              value={xp}
+              onChange={handleXPChange}
+              className="w-fit-content mt-2"
+            /> */}
+
+            {/* <label htmlFor="rankRange" className="text-cyan-400">
+              fitness: <span className="font-bold">{0}/100</span>
+            </label>
+            <input
+              type="range"
+              id="rankRange"
+              min={0}
+              max={100}
+              value={0}
+              className="w-full mt-2"
+            />
+            <label htmlFor="rankRange" className="text-cyan-400">
+              mental: <span className="font-bold">{0}/100</span>
+            </label>
+            <input
+              type="range"
+              id="rankRange"
+              min={0}
+              max={100}
+              value={0}
+              className="w-full mt-2"
+            />
+            <label htmlFor="rankRange" className="text-cyan-400">
+              skills: <span className="font-bold">{0}/100</span>
+            </label>
+            <input
+              type="range"
+              id="rankRange"
+              min={0}
+              max={100}
+              value={0}
+              className="w-full mt-2"
+            /> */}
+          </div>
+
+          <button
+            onClick={handleNameSubmit}
+            className="cursor-pointer  transition hover:bg-blue-300  accept"
+          >
+            Confirm
+          </button>
+        </div>
+      )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+welcomepageor homepage with :
+      [ two options: {
+        1. start new quest
+        2. login or create your profile
+      } ]
+
+
+then navigate to dashboard page where few things are mention:
+  [{
+    1. logout btn on the top left 
+    2. real-time and volume control on the right
+    3. then player status area
+          [ all are in progress bar format 
+            1. rank 
+            2. xp
+            3. level
+          ],
+          then player rank and streak and experience points row along side total gold and current gold points row
+
+    4. Today's Quest list in box format like a dashboard with the following:
+    {
+    10 pushups
+    20 situps
+    30 squats
+    1km run
+  } with two options :[ time remaing section and other one is completed section ]
+
+  
+    # 40 jumping jacks
+    # 50 lunges
+    # 60 crunches
+    # 70 planks
+    # 80 burpees
+    # 90 mountain climbers
+    # 100 jumping lunges
+    # 110 jumping squats
+    # 120 jumping lunges
+    # 130 jumping squats
+
+      # 1. quest name
+      # 2. quest description
+      # 3. quest status
+      # 4. quest progress
+      # 5. quest rewards
+    
+    5. mental
+    6. spiritual
+    7. skills
+  }]      
+
+
+
+  Key Improvements Integrated:
+Accessibility:
+
+Ensured better color contrast with text-gray-300 and text-cyan-400 for readability.
+Buttons have hover states for better accessibility and visual feedback.
+Text and elements are styled to be easy to read for users with visual impairments.
+Interactivity:
+
+Progress Bars now include motion.div for animated progress. The progress is dynamic and transitions smoothly based on the current stats.
+Level Up UI: A button triggers the Level Up UI, which can be toggled, making the experience more interactive.
+Achievements and Quests sections display lists dynamically. If empty, a message prompts the user to start their journey.
+Responsive Design:
+
+The grid layout for Player Stats, Achievements, Quests, and Progress Bars is responsive. It uses grid-cols-1 for small screens and md:grid-cols-2 for larger screens to ensure it looks great on both mobile and desktop.
+The layout is mobile-first (simpler on smaller screens) and scales gracefully on larger screens.
+UI Enhancements:
+
+Gradient background creates a futuristic feel.
+Hover effects for buttons provide interactive feedback.
+Icons (e.g., FaRunning, FaBrain, GiSkills) next to stat labels add visual clarity and improve UX.
+What’s Next:
+Testing: Thorough testing on different devices and screen sizes.
+Tooltips: Consider adding tooltips on hover to show more details about each stat or progress bar.
+Level-Up Animation: A more visually engaging level-up animation when the user reaches a milestone would be a nice touch.
+This version blends the best of both dashboards while improving accessibility, interactivity, and ensuring that the UI is responsive.

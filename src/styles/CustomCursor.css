@@ -1,0 +1,36 @@
+/* Hide the default cursor */
+  
+  /* Custom cursor style */
+  .custom-cursor {
+    position: fixed;
+    background-image: url('../../public/dagger.png');
+    background-size: cover;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    /* Optionally add effects like scaling or trailing effect */
+  }
+  
+  .custom-cursor.hover {
+    width: 50px; /* Enlarge when hovering */
+    height: 50px;
+    background-color: pink; /* Change color on hover */
+  }
+  
+  /* Example of an interactive element that changes cursor style when hovering */
+  .interactive-element {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 50px;
+  }
+  
+  .interactive-element:hover {
+    background-color: #555;
+  }
+  
